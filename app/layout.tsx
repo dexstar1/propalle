@@ -1,7 +1,7 @@
 
 import './globals.css'
 import type { Metadata } from 'next'
-import Navigation from '@/components/Navigation'
+import Navigation from '../components/Navigation'
 
 export const metadata: Metadata = {
   title: 'Blog App',
