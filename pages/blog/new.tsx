@@ -28,8 +28,9 @@ export default function NewPost() {
   };
 
   const askGemini = async () => {
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-    const prompt = `Help me improve this text: ${editor.getHTML()}`;
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const prompt = `Create small blog post with html tags based on this title: ${title}
+`;
     const result = await model.generateContent(prompt);
     const response = await result.response;
     editor.commands.setContent(response.text());
