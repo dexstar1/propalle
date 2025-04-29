@@ -44,7 +44,35 @@ export default function EditPost({ post }) {
         placeholder="Post title"
         className="w-full text-2xl font-bold mb-4 p-2 border rounded"
       />
-      <EditorContent editor={editor} className="prose lg:prose-xl min-h-[300px] border p-4 rounded" />
+      <div className="border rounded overflow-hidden">
+        <div className="border-b p-2 bg-gray-50 flex gap-2">
+          <button
+            onClick={() => editor.chain().focus().toggleBold().run()}
+            className={`p-2 rounded ${editor?.isActive('bold') ? 'bg-gray-200' : ''}`}
+          >
+            Bold
+          </button>
+          <button
+            onClick={() => editor.chain().focus().toggleItalic().run()}
+            className={`p-2 rounded ${editor?.isActive('italic') ? 'bg-gray-200' : ''}`}
+          >
+            Italic
+          </button>
+          <button
+            onClick={() => editor.chain().focus().toggleBulletList().run()}
+            className={`p-2 rounded ${editor?.isActive('bulletList') ? 'bg-gray-200' : ''}`}
+          >
+            Bullet List
+          </button>
+          <button
+            onClick={() => editor.chain().focus().toggleOrderedList().run()}
+            className={`p-2 rounded ${editor?.isActive('orderedList') ? 'bg-gray-200' : ''}`}
+          >
+            Numbered List
+          </button>
+        </div>
+        <EditorContent editor={editor} className="prose lg:prose-xl min-h-[200px] p-4" />
+      </div>
       <div className="mt-4">
         <button onClick={handleUpdate} className="bg-green-500 text-white px-4 py-2 rounded">
           Update Post
